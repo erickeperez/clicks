@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 class App extends Component {
   constructor(){
     super()
@@ -31,9 +32,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClickP}>Increment</button>
-        <button onClick={this.handleClickM}>Decrement</button>
+        <h1 className='count'>{this.state.count}</h1>
+        <div className="buttons">
+          <button onClick={this.handleClickP} className='btn btn-primary btn-lg plus'>Increment</button>
+          <button onClick={this.handleClickM} className='btn btn-primary btn-lg minus'>Decrement</button>
+        </div>
       </div>
     );
   }
