@@ -22,6 +22,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>{this.state.count}</h1>
+        <button>Increment</button>
+        <button>Decrement</button>
       </div>
     );
   }
