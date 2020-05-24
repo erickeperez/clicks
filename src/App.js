@@ -1,45 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import randomColor from 'random-color'
 
+// Refactoring code 
+// Changing from Class to Function
+// Using useState()
+// useEffect()
 
-class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      count:  0
-    }
-    this.handleClickP = this.handleClickP.bind(this)
-    this.handleClickM = this.handleClickM.bind(this)
+function App() {
+  const [count, setCount] = useState(0) 
+  const [color, setColor] = useState(randomColor())
+
+  function increment() {
+    setCount(prevCount => prevCount + 1)
+  }
+  function decrement() {
+    setCount(prevCount => prevCount - 1)
   }
 
-//  Method for adding 1 to count when increment button is pressed
-  handleClickP() {
-    this.setState(prevState => {
-      return{
-        count: prevState.count + 1
-      }
-    })
-  }
-  //  Method for subtracting 1 to count when decrement button is pressed
-  handleClickM() {
-    this.setState(prevState => {
-      return{
-        count: prevState.count - 1
-      }
-    })
-  }
-  render(){
+  useEffect(() => {
+    setColor(randomColor())
+}, [count])
 
-    return (
+  return(
       <div className="App">
-        <h1 className='count'>{this.state.count}</h1>
+        <h1 style={{color: color.hexString()}}  className='count'>{count}</h1>
         <div className="buttons">
-          <button onClick={this.handleClickP} className='btn btn-primary btn-lg plus'>Increment</button>
-          <button onClick={this.handleClickM} className='btn btn-primary btn-lg minus'>Decrement</button>
+            <button onClick={increment} className='btn btn-primary btn-lg plus'>Increment</button>
+            <button onClick={decrement} className='btn btn-primary btn-lg minus'>Decrement</button>
         </div>
       </div>
-    );
-  }
+  )
 }
+
+
 
 export default App;
